@@ -52,9 +52,3 @@ if uploaded_file is not None:
         st.error("🚨 **Статус:** НАЗАР АУДАРЫҢЫЗ! Ауру немесе ылғал жетіспеушілігі бар.")
     else:
         st.success("✅ **Статус:** ӨСІМДІК ЖАҒДАЙЫ ЖАҚСЫ.")
-
-# 2. Server-ге қажетті кітапханалар тізімін сақтау
-writefile requirements.txt
-streamlit
-opencv-python-headless
-numpy
