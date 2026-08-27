@@ -8,7 +8,21 @@ st.set_page_config(page_title="Ақылды өсімдік мониторинг�
 st.title("🌱 Өсімдіктер мониторингі және авто-диагностика")
 st.caption("Өсімдік аурулары мен дефициттерді түстік сегментация арқылы талдау")
 
-uploaded_file = st.file_uploader("Өсімдік суретін жүктеңіз...", type=["jpg", "jpeg", "png"])
+# -------------------------------------------------------------
+# КІРІС ӘДІСІН ТАНДАУ (Камера немесе Файл)
+# -------------------------------------------------------------
+input_type = st.radio(
+    "Суретті беру әдісін таңдаңыз:",
+    ("📸 Камераны қосу", "📁 Сурет файлын жүктеу"),
+    horizontal=True
+)
+
+uploaded_file = None
+
+if input_type == "📸 Камераны қосу":
+    uploaded_file = st.camera_input("Өсімдікті немесе жапырақты суретке түсіріңіз")
+else:
+    uploaded_file = st.file_uploader("Өсімдік суретін жүктеңіз...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     # 1. Суретті жүктеу және өлшемін реттеу
@@ -37,7 +51,7 @@ if uploaded_file is not None:
     other_pct = max(0.0, 100.0 - (green_pct + yellow_pct + brown_pct))
     
     # Суретті көрсету
-    st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), caption="Түпнұсқа сурет", use_container_width=True)
+    st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), caption="Талданатын сурет", use_container_width=True)
     
     # -------------------------------------------------------------
     # 1-БӨЛІМ: ДИАГНОСТИКА КЕСТЕСІ (ЕСЕПТЕЛГЕН МӘНДЕР)
@@ -129,7 +143,6 @@ if uploaded_file is not None:
         recommendations.append("Суару және жарық режимін қазіргі қалыпты деңгейде сақтаңыз.")
         recommendations.append("Алдын алу үшін айына 1 рет кешенді минералды тыңайтқыш беріңіз.")
 
-    # Ұсыныстарды кестемен шығару
     steps = [f"{i+1}️⃣" for i in range(len(recommendations))]
     st.table({
         "Қадам": steps,
