@@ -38,7 +38,7 @@ if uploaded_file is not None:
     yellow_pct = (yellow_pixels / total_pixels) * 100
     
     # Түпнұсқа суретті шығару
-    st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), caption="Түпнұсқа сурет", use_column_width=True)
+    st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), caption="Түпнұсқа сурет", use_container_width=True)
     
     # Көрсеткіштер
     col1, col2 = st.columns(2)
