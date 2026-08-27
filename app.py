@@ -54,7 +54,7 @@ if uploaded_file is not None:
         st.success("✅ **Статус:** ӨСІМДІК ЖАҒДАЙЫ ЖАҚСЫ.")
 
 # 2. Server-ге қажетті кітапханалар тізімін сақтау
-%%writefile requirements.txt
+writefile requirements.txt
 streamlit
 opencv-python-headless
 numpy
