@@ -6,7 +6,7 @@ import numpy as np
 st.set_page_config(page_title="Ақылды өсімдік мониторингі", page_icon="🌱", layout="centered")
 
 st.title("🌱 Ақылды ауыл шаруашылығы")
-st.subtitle("Өсімдік ауруларын суреттен танитын мониторинг жүйесі")
+st.caption("Өсімдік ауруларын суреттен танитын мониторинг жүйесі")
 
 uploaded_file = st.file_uploader("Өсімдік жапырағының суретін жүктеңіз...", type=["jpg", "jpeg", "png"])
 
